@@ -1,7 +1,7 @@
 # Учебный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Анастасия Михайловская](https://up.htmlacademy.ru/react/4/user/518103).
-* Наставник: `Неизвестно`.
+* Наставник: [Эльдар Амантай](https://htmlacademy.ru/profile/id1480701).
 
 ---
 
