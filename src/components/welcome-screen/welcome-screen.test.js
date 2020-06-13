@@ -8,7 +8,10 @@ const testErrorCount = 2;
 it(`Render WelcomeScreen`, () => {
   const tree = renderer.
     create(
-        <WelcomeScreen errorCount={testErrorCount} />
+        <WelcomeScreen
+          errorCount={testErrorCount}
+          onWelcomeButtonClick={() => {}}
+        />
     ).toJSON();
 
   expect(tree).toMatchSnapshot();
