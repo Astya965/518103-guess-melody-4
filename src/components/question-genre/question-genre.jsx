@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 
 const QuestionGenre = (props) => {
-  const {question} = props;
+  const {question, onAnswer} = props;
   const {genre, answers} = question;
+  const [userAnswers, setUserAnswers] = useState([false, false, false, false]);
 
   return (
     <section className="game game--genre">
@@ -27,7 +28,10 @@ const QuestionGenre = (props) => {
 
       <section className="game__screen">
         <h2 className="game__title">Выберите {genre} треки</h2>
-        <form className="game__tracks">
+        <form className="game__tracks" onSubmit={(evt) => {
+          evt.preventDefault();
+          onAnswer(userAnswers, genre);
+        }}>
           {answers.map((answer, i) => {
             return (
               <div className="track" key={answer.src + i}>
@@ -36,7 +40,12 @@ const QuestionGenre = (props) => {
                   <audio src={answer.src}></audio>
                 </div>
                 <div className="game__answer">
-                  <input className="game__input visually-hidden" type="checkbox" name="answer" value={answer.genre} id={answer.src + i} />
+                  <input className="game__input visually-hidden" type="checkbox" name="answer" value={answer.genre} id={answer.src + i}
+                    checked={userAnswers[i]}
+                    onChange={(evt) => {
+                      const value = evt.target.checked;
+                      setUserAnswers([...userAnswers.slice(0, i), value, ...userAnswers.slice(i + 1)]);
+                    }} />
                   <label className="game__check" htmlFor={answer.src + i}>Отметить</label>
                 </div>
               </div>
@@ -51,6 +60,7 @@ const QuestionGenre = (props) => {
 };
 
 QuestionGenre.propTypes = {
+  onAnswer: PropTypes.func.isRequired,
   question: PropTypes.shape({
     type: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
