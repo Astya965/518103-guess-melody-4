@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render QuestionArtist 1`] = `
+<section
+  className="game game--artist"
+>
+  <header
+    className="game__header"
+  >
+    <a
+      className="game__back"
+      href="#"
+    >
+      <span
+        className="visually-hidden"
+      >
+        Сыграть ещё раз
+      </span>
+      <img
+        alt="Угадай мелодию"
+        className="game__logo"
+        src="img/melody-logo-ginger.png"
+      />
+    </a>
+    <svg
+      className="timer"
+      viewBox="0 0 780 780"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        className="timer__line"
+        cx="390"
+        cy="390"
+        r="370"
+        style={
+          Object {
+            "filter": "url(#blur)",
+            "transform": "rotate(-90deg) scaleY(-1)",
+            "transformOrigin": "center",
+          }
+        }
+      />
+    </svg>
+    <div
+      className="game__mistakes"
+    >
+      <div
+        className="wrong"
+      />
+      <div
+        className="wrong"
+      />
+      <div
+        className="wrong"
+      />
+    </div>
+  </header>
+  <section
+    className="game__screen"
+  >
+    <h2
+      className="game__title"
+    >
+      Кто исполняет эту песню?
+    </h2>
+    <div
+      className="game__track"
+    >
+      <div
+        className="track"
+      >
+        <button
+          className="track__button track__button--play"
+          type="button"
+        />
+        <div
+          className="track__status"
+        >
+          <audio
+            src="https://upload.wikimedia.org/wikipedia/commons/f/fb/Aaron_Dunn_-_Sonata_No_1_-_Movement_1.ogg"
+          />
+        </div>
+      </div>
+    </div>
+    <form
+      className="game__artist"
+    >
+      <div
+        className="artist"
+      >
+        <input
+          className="artist__input visually-hidden"
+          id="Aaron Dunn"
+          name="answer"
+          type="radio"
+          value="Aaron Dunn"
+        />
+        <label
+          className="artist__name"
+          htmlFor="Aaron Dunn"
+        >
+          <img
+            alt="Aaron Dunn"
+            className="artist__picture"
+            src="https://api.adorable.io/avatars/122"
+          />
+          Aaron Dunn
+        </label>
+      </div>
+      <div
+        className="artist"
+      >
+        <input
+          className="artist__input visually-hidden"
+          id="Daniel Veesey"
+          name="answer"
+          type="radio"
+          value="Daniel Veesey"
+        />
+        <label
+          className="artist__name"
+          htmlFor="Daniel Veesey"
+        >
+          <img
+            alt="Daniel Veesey"
+            className="artist__picture"
+            src="https://api.adorable.io/avatars/128"
+          />
+          Daniel Veesey
+        </label>
+      </div>
+      <div
+        className="artist"
+      >
+        <input
+          className="artist__input visually-hidden"
+          id="Karine Gilanyan"
+          name="answer"
+          type="radio"
+          value="Karine Gilanyan"
+        />
+        <label
+          className="artist__name"
+          htmlFor="Karine Gilanyan"
+        >
+          <img
+            alt="Karine Gilanyan"
+            className="artist__picture"
+            src="https://api.adorable.io/avatars/54"
+          />
+          Karine Gilanyan
+        </label>
+      </div>
+    </form>
+  </section>
+</section>
+`;
