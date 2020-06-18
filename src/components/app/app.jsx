@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
@@ -16,9 +16,9 @@ const App = (props) => {
     if (step === -1 || step >= questions.length) {
       return (
         <WelcomeScreen
-            errorCount={errorCount}
-            onWelcomeButtonClick={() => setStep(0)}/>
-      )
+          errorCount={errorCount}
+          onWelcomeButtonClick={() => setStep(0)}/>
+      );
     }
 
     if (question) {
@@ -26,18 +26,30 @@ const App = (props) => {
         case GameType.ARTIST:
           return (
             <QuestionArtist question={questions[1]}
-              onAnswer={() => setStep(step + 1)}/>
+              onAnswer={(userAnswer, rightAnswer) => {
+                setStep(step + 1);
+                // eslint-disable-next-line
+                console.log(rightAnswer);
+                // eslint-disable-next-line
+                console.log(userAnswer);
+              }}/>
           );
         case GameType.GENRE:
-            return (
-              <QuestionGenre question={questions[0]}
-                onAnswer={() => setStep(step + 1)}/>
-            );
+          return (
+            <QuestionGenre question={questions[0]}
+              onAnswer={(userAnswer, rightAnswer) => {
+                setStep(step + 1);
+                // eslint-disable-next-line
+                console.log(rightAnswer);
+                // eslint-disable-next-line
+                console.log(userAnswer);
+              }}/>
+          );
       }
     }
 
     return null;
-  }
+  };
 
   return (
     <Router>
