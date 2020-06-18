@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const QuestionArtist = (props) => {
-  const {question} = props;
+  const {question, onAnswer} = props;
   const {song, answers} = question;
 
   return (
@@ -40,7 +40,11 @@ const QuestionArtist = (props) => {
           {answers.map((answer) => {
             return (
               <div className="artist" key={answer.artist + `-1`}>
-                <input className="artist__input visually-hidden" type="radio" name="answer" value={answer.artist} id={answer.artist} />
+                <input className="artist__input visually-hidden" type="radio" name="answer" value={answer.artist} id={answer.artist}
+                  onChange={(evt) => {
+                    const value = evt.target.value;
+                    onAnswer(value, song.artist);
+                  }}/>
                 <label className="artist__name" htmlFor={answer.artist}>
                   <img className="artist__picture" src={answer.picture} alt={answer.artist} />
                   {answer.artist}
@@ -55,6 +59,7 @@ const QuestionArtist = (props) => {
 };
 
 QuestionArtist.propTypes = {
+  onAnswer: PropTypes.func.isRequired,
   question: PropTypes.shape({
     type: PropTypes.string.isRequired,
     song: PropTypes.shape({
