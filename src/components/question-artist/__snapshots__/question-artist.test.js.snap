@@ -92,6 +92,7 @@ exports[`Render QuestionArtist 1`] = `
           className="artist__input visually-hidden"
           id="Aaron Dunn"
           name="answer"
+          onChange={[Function]}
           type="radio"
           value="Aaron Dunn"
         />
@@ -114,6 +115,7 @@ exports[`Render QuestionArtist 1`] = `
           className="artist__input visually-hidden"
           id="Daniel Veesey"
           name="answer"
+          onChange={[Function]}
           type="radio"
           value="Daniel Veesey"
         />
@@ -136,6 +138,7 @@ exports[`Render QuestionArtist 1`] = `
           className="artist__input visually-hidden"
           id="Karine Gilanyan"
           name="answer"
+          onChange={[Function]}
           type="radio"
           value="Karine Gilanyan"
         />

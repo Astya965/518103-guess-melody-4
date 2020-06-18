@@ -24,7 +24,7 @@ const testQuestionArtist = {
 it(`Render QuestionArtist`, () => {
   const tree = renderer.
     create(
-        <QuestionArtist question={testQuestionArtist} />
+        <QuestionArtist onAnswer={() => {}} question={testQuestionArtist} />
     ).toJSON();
 
   expect(tree).toMatchSnapshot();
