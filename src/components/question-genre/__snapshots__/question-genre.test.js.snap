@@ -67,6 +67,7 @@ exports[`Render QuestionGenre 1`] = `
     </h2>
     <form
       className="game__tracks"
+      onSubmit={[Function]}
     >
       <div
         className="track"
@@ -86,9 +87,11 @@ exports[`Render QuestionGenre 1`] = `
           className="game__answer"
         >
           <input
+            checked={false}
             className="game__input visually-hidden"
             id="https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg0"
             name="answer"
+            onChange={[Function]}
             type="checkbox"
             value="rock"
           />
@@ -118,9 +121,11 @@ exports[`Render QuestionGenre 1`] = `
           className="game__answer"
         >
           <input
+            checked={false}
             className="game__input visually-hidden"
             id="https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg1"
             name="answer"
+            onChange={[Function]}
             type="checkbox"
             value="blues"
           />
@@ -150,9 +155,11 @@ exports[`Render QuestionGenre 1`] = `
           className="game__answer"
         >
           <input
+            checked={false}
             className="game__input visually-hidden"
             id="https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg2"
             name="answer"
+            onChange={[Function]}
             type="checkbox"
             value="jazz"
           />
@@ -182,9 +189,11 @@ exports[`Render QuestionGenre 1`] = `
           className="game__answer"
         >
           <input
+            checked={false}
             className="game__input visually-hidden"
             id="https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg3"
             name="answer"
+            onChange={[Function]}
             type="checkbox"
             value="rock"
           />

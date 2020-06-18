@@ -24,7 +24,7 @@ const testQuestionGenre = {
 it(`Render QuestionGenre`, () => {
   const tree = renderer.
     create(
-        <QuestionGenre question={testQuestionGenre}/>
+        <QuestionGenre onAnswer={() => {}} question={testQuestionGenre}/>
     ).toJSON();
 
   expect(tree).toMatchSnapshot();
