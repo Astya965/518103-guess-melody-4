@@ -1,9 +1,7 @@
-const AVATAR_URL = `https://api.adorable.io/avatars/128`;
-
 const questions = [
   {
     type: `genre`,
-    genre: `rock`,
+    genre: `folk`,
     answers: [{
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
       genre: `rock`,
@@ -15,41 +13,25 @@ const questions = [
       genre: `jazz`,
     }, {
       src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
-      genre: `rock`,
+      genre: `folk`,
     }],
   }, {
     type: `artist`,
     song: {
-      artist: `Jim Beam`,
-      src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
+      artist: `Aaron Dunn`,
+      src: `https://upload.wikimedia.org/wikipedia/commons/f/fb/Aaron_Dunn_-_Sonata_No_1_-_Movement_1.ogg`,
     },
     answers: [{
-      picture: `${AVATAR_URL}/${Math.random()}`,
-      artist: `John Snow`,
+      picture: `https://api.adorable.io/avatars/122`,
+      artist: `Aaron Dunn`,
     }, {
-      picture: `${AVATAR_URL}/${Math.random()}`,
-      artist: `Jack Daniels`,
+      picture: `https://api.adorable.io/avatars/128`,
+      artist: `Daniel Veesey`,
     }, {
-      picture: `${AVATAR_URL}/${Math.random()}`,
-      artist: `Jim Beam`,
+      picture: `https://api.adorable.io/avatars/54`,
+      artist: `Karine Gilanyan`,
     }],
-  }, {
-    type: `genre`,
-    genre: `rock`,
-    answers: [{
-      src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
-      genre: `rock`,
-    }, {
-      src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
-      genre: `blues`,
-    }, {
-      src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
-      genre: `jazz`,
-    }, {
-      src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
-      genre: `rock`,
-    }],
-  },
+  }
 ];
 
 export default questions;
