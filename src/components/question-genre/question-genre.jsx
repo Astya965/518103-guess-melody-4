@@ -6,6 +6,11 @@ const QuestionGenre = (props) => {
   const {genre, answers} = question;
   const [userAnswers, setUserAnswers] = useState([false, false, false, false]);
 
+  const handleFormSubmit = (e) => {
+      e.preventDefault();
+      onAnswer(userAnswers, genre);
+  }
+
   return (
     <section className="game game--genre">
       <header className="game__header">
@@ -28,10 +33,7 @@ const QuestionGenre = (props) => {
 
       <section className="game__screen">
         <h2 className="game__title">Выберите {genre} треки</h2>
-        <form className="game__tracks" onSubmit={(evt) => {
-          evt.preventDefault();
-          onAnswer(userAnswers, genre);
-        }}>
+        <form className="game__tracks" onSubmit={handleFormSubmit}>
           {answers.map((answer, i) => {
             return (
               <div className="track" key={answer.src + i}>
