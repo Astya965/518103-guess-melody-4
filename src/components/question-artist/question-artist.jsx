@@ -5,6 +5,11 @@ const QuestionArtist = (props) => {
   const {question, onAnswer} = props;
   const {song, answers} = question;
 
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    onAnswer(value, song.artist);
+  };
+
   return (
     <section className="game game--artist">
       <header className="game__header">
@@ -41,10 +46,7 @@ const QuestionArtist = (props) => {
             return (
               <div className="artist" key={answer.artist + `-1`}>
                 <input className="artist__input visually-hidden" type="radio" name="answer" value={answer.artist} id={answer.artist}
-                  onChange={(evt) => {
-                    const value = evt.target.value;
-                    onAnswer(value, song.artist);
-                  }}/>
+                  onChange={handleInputChange}/>
                 <label className="artist__name" htmlFor={answer.artist}>
                   <img className="artist__picture" src={answer.picture} alt={answer.artist} />
                   {answer.artist}
