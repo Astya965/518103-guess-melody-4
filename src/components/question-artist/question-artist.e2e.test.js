@@ -29,10 +29,6 @@ const mock = {
 
 describe(`QuestionArtist tests`, () => {
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   it(`Click on user answer should pass to the callback value of target input`, () => {
     const {question} = mock;
     const onAnswer = jest.fn();
