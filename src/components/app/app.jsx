@@ -10,7 +10,7 @@ import {GameType} from "../../utils/const.js";
 const App = (props) => {
   const {errorCount, questions} = props;
   const [step, setStep] = useState(-1);
-  const question = questions[step];
+  const currentQuestion = currentQuestion[step];
 
   const renderScreen = () => {
     if (step === -1 || step >= questions.length) {
@@ -21,11 +21,11 @@ const App = (props) => {
       );
     }
 
-    if (question) {
-      switch (question.type) {
+    if (currentQuestion) {
+      switch (currentQuestion.type) {
         case GameType.ARTIST:
           return (
-            <QuestionArtist question={questions[1]}
+            <QuestionArtist currentQuestion={questions[1]}
               onAnswer={(userAnswer, rightAnswer) => {
                 setStep(step + 1);
                 // eslint-disable-next-line
@@ -36,7 +36,7 @@ const App = (props) => {
           );
         case GameType.GENRE:
           return (
-            <QuestionGenre question={questions[0]}
+            <QuestionGenre currentQuestion={questions[0]}
               onAnswer={(userAnswer, rightAnswer) => {
                 setStep(step + 1);
                 // eslint-disable-next-line
@@ -58,11 +58,11 @@ const App = (props) => {
           {renderScreen()}
         </Route>
         <Route exact path="/dev-artist">
-          <QuestionArtist question={questions[1]}
+          <QuestionArtist currentQuestion={questions[1]}
             onAnswer={() => {}}/>
         </Route>
         <Route exact path="/dev-genre">
-          <QuestionGenre question={questions[0]}
+          <QuestionGenre currentQuestion={questions[0]}
             onAnswer={() => {}}/>
         </Route>
       </Switch>
