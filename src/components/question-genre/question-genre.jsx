@@ -7,9 +7,9 @@ const QuestionGenre = (props) => {
   const [userAnswers, setUserAnswers] = useState([false, false, false, false]);
 
   const handleFormSubmit = (e) => {
-      e.preventDefault();
-      onAnswer(userAnswers, genre);
-  }
+    e.preventDefault();
+    onAnswer(userAnswers, genre);
+  };
 
   return (
     <section className="game game--genre">
