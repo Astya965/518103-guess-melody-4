@@ -26,23 +26,15 @@ const App = (props) => {
         case GameType.ARTIST:
           return (
             <QuestionArtist question={questions[1]}
-              onAnswer={(userAnswer, rightAnswer) => {
+              onAnswer={() => {
                 setStep(step + 1);
-                // eslint-disable-next-line
-                console.log(rightAnswer);
-                // eslint-disable-next-line
-                console.log(userAnswer);
               }}/>
           );
         case GameType.GENRE:
           return (
             <QuestionGenre question={questions[0]}
-              onAnswer={(userAnswer, rightAnswer) => {
+              onAnswer={() => {
                 setStep(step + 1);
-                // eslint-disable-next-line
-                console.log(rightAnswer);
-                // eslint-disable-next-line
-                console.log(userAnswer);
               }}/>
           );
       }
