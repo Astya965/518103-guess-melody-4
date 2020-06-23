@@ -1,15 +1,13 @@
 import React from "react";
 import renderer from "react-test-renderer";
 
-import App from "./app.jsx";
+import QuestionGenre from "./question-genre.jsx";
 import questions from "../../mocks/questions.js";
 
-const testErrorCount = 2;
-
-it(`Render App`, () => {
+it(`Render QuestionGenre`, () => {
   const tree = renderer.
     create(
-        <App errorCount={testErrorCount} questions={questions}/>
+        <QuestionGenre onAnswer={() => {}} question={questions[0]}/>
     ).toJSON();
 
   expect(tree).toMatchSnapshot();
