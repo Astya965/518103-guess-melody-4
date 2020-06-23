@@ -30,10 +30,6 @@ const mock = {
 
 describe(`QuestionArtist tests`, () => {
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   it(`When user answers genre question form is not sent`, () => {
     const {question} = mock;
     const onAnswer = jest.fn();
