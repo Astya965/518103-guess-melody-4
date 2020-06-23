@@ -12,10 +12,6 @@ const testErrorCount = 1;
 
 describe(`Render App`, () => {
 
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   const renderComponent = (props = {}) => {
     return mount(
         <App errorCount={testErrorCount}
@@ -32,26 +28,42 @@ describe(`Render App`, () => {
 
   it(`Render QuestionGenre`, () => {
     const appComponent = renderComponent();
-    appComponent.find(`button`).simulate(`click`);
+
+    const startButton = appComponent
+      .find(WelcomeScreen).find(`button.welcome__button`);
+    startButton.simulate(`click`);
 
     expect(appComponent.find(QuestionGenre)).toHaveLength(1);
   });
 
   it(`Render QuestionArtist`, () => {
     const appComponent = renderComponent();
-    appComponent.find(`button`).simulate(`click`);
-    appComponent.find(`form`).simulate(`submit`);
+
+    const startButton = appComponent
+      .find(WelcomeScreen).find(`button.welcome__button`);
+    startButton.simulate(`click`);
+
+    const answerForm = appComponent
+      .find(QuestionGenre).find(`form.game__tracks`);
+    answerForm.simulate(`submit`);
 
     expect(appComponent.find(QuestionArtist)).toHaveLength(1);
   });
 
   it(`After all questions come back to WelcomeScreen`, () => {
     const appComponent = renderComponent();
-    appComponent.find(`button`).simulate(`click`);
-    appComponent.find(`form`).simulate(`submit`);
-    const answerInputs = appComponent.find(`input`);
-    const answerOne = answerInputs.at(0);
 
+    const startButton = appComponent
+      .find(WelcomeScreen).find(`button.welcome__button`);
+    startButton.simulate(`click`);
+
+    const answerForm = appComponent
+      .find(QuestionGenre).find(`form.game__tracks`);
+    answerForm.simulate(`submit`);
+
+    const answerInputs = appComponent
+      .find(QuestionArtist).find(`input.artist__input`);
+    const answerOne = answerInputs.at(0);
     answerOne.simulate(`change`);
 
     expect(appComponent.find(WelcomeScreen)).toHaveLength(1);
