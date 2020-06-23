@@ -11,6 +11,11 @@ const QuestionGenre = (props) => {
     onAnswer(userAnswers, genre);
   };
 
+  const handleInputChange = (i) => (e) => {
+    const value = e.target.checked;
+    setUserAnswers([...userAnswers.slice(0, i), value, ...userAnswers.slice(i + 1)]);
+  };
+
   return (
     <section className="game game--genre">
       <header className="game__header">
@@ -44,10 +49,7 @@ const QuestionGenre = (props) => {
                 <div className="game__answer">
                   <input className="game__input visually-hidden" type="checkbox" name="answer" value={answer.genre} id={answer.src + i}
                     checked={userAnswers[i]}
-                    onChange={(evt) => {
-                      const value = evt.target.checked;
-                      setUserAnswers([...userAnswers.slice(0, i), value, ...userAnswers.slice(i + 1)]);
-                    }} />
+                    onChange={handleInputChange(i)} />
                   <label className="game__check" htmlFor={answer.src + i}>Отметить</label>
                 </div>
               </div>
