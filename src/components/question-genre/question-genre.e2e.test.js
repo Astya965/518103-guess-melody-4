@@ -2,36 +2,12 @@ import React from "react";
 import {shallow, mount} from "enzyme";
 
 import QuestionGenre from "./question-genre.jsx";
-
-const mock = {
-  question: {
-    type: `genre`,
-    genre: `rock`,
-    answers: [
-      {
-        src: `path`,
-        genre: `rock`,
-      },
-      {
-        src: `path`,
-        genre: `jazz`,
-      },
-      {
-        src: `path`,
-        genre: `jazz`,
-      },
-      {
-        src: `path`,
-        genre: `blues`,
-      },
-    ],
-  },
-};
+import questions from "../../mocks/questions.js";
 
 describe(`QuestionArtist tests`, () => {
 
   it(`When user answers genre question form is not sent`, () => {
-    const {question} = mock;
+    const question = questions[0];
     const onAnswer = jest.fn();
     const genreQuestion = shallow(<QuestionGenre
       onAnswer={onAnswer}
@@ -50,7 +26,7 @@ describe(`QuestionArtist tests`, () => {
   });
 
   it(`User answer passed to callback is consistent with "userAnswers" prop`, () => {
-    const {question} = mock;
+    const question = questions[0];
     const onAnswer = jest.fn((...args) => [...args]);
     const userAnswer = [false, true, false, false];
 

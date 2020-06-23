@@ -2,29 +2,12 @@ import React from "react";
 import renderer from "react-test-renderer";
 
 import QuestionGenre from "./question-genre.jsx";
-
-const testQuestionGenre = {
-  type: `genre`,
-  genre: `rock`,
-  answers: [{
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
-    genre: `rock`,
-  }, {
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
-    genre: `blues`,
-  }, {
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
-    genre: `jazz`,
-  }, {
-    src: `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg`,
-    genre: `rock`,
-  }],
-};
+import questions from "../../mocks/questions.js";
 
 it(`Render QuestionGenre`, () => {
   const tree = renderer.
     create(
-        <QuestionGenre onAnswer={() => {}} question={testQuestionGenre}/>
+        <QuestionGenre onAnswer={() => {}} question={questions[0]}/>
     ).toJSON();
 
   expect(tree).toMatchSnapshot();

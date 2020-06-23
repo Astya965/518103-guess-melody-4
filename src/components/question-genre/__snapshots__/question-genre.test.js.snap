@@ -62,7 +62,7 @@ exports[`Render QuestionGenre 1`] = `
       className="game__title"
     >
       Выберите 
-      rock
+      folk
        треки
     </h2>
     <form
@@ -195,7 +195,7 @@ exports[`Render QuestionGenre 1`] = `
             name="answer"
             onChange={[Function]}
             type="checkbox"
-            value="rock"
+            value="folk"
           />
           <label
             className="game__check"

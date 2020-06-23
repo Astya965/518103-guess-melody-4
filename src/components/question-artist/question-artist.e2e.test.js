@@ -2,35 +2,12 @@ import React from "react";
 import {shallow} from "enzyme";
 
 import QuestionArtist from "./question-artist.jsx";
-
-const mock = {
-  question: {
-    type: `artist`,
-    song: {
-      artist: `one`,
-      src: ``
-    },
-    answers: [
-      {
-        artist: `one`,
-        picture: `pic-one`,
-      },
-      {
-        artist: `two`,
-        picture: `pic-two`,
-      },
-      {
-        artist: `three`,
-        picture: `pic-three`,
-      },
-    ],
-  }
-};
+import questions from "../../mocks/questions.js";
 
 describe(`QuestionArtist tests`, () => {
 
   it(`Click on user answer should pass to the callback value of target input`, () => {
-    const {question} = mock;
+    const question = questions[1];
     const onAnswer = jest.fn();
     const userAnswer = `one`;
 
