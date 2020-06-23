@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const QuestionGenre = (props) => {
   const {question, onAnswer} = props;
   const {genre, answers} = question;
-  const [userAnswers, setUserAnswers] = useState([false, false, false, false]);
+  const [userAnswers, setUserAnswers] = useState(answers.map(() => false));
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
