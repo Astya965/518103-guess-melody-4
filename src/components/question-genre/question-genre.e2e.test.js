@@ -28,7 +28,8 @@ describe(`QuestionArtist tests`, () => {
   it(`User answer passed to callback is consistent with "userAnswers" prop`, () => {
     const question = questions[0];
     const onAnswer = jest.fn((...args) => [...args]);
-    const userAnswer = [false, true, false, false];
+    const userAnswer = {"1": true};
+    const inputChecked = [false, true, false, false];
 
     const genreQuestion = mount(<QuestionGenre
       onAnswer={onAnswer}
@@ -46,6 +47,6 @@ describe(`QuestionArtist tests`, () => {
 
     expect(
         genreQuestion.find(`input`).map((it) => it.prop(`checked`))
-    ).toEqual(userAnswer);
+    ).toEqual(inputChecked);
   });
 });
