@@ -17,7 +17,6 @@ const QuestionGenre = (props) => {
       ...userAnswers,
       [i]: value,
     });
-    console.log(userAnswers);
   };
 
   return (
