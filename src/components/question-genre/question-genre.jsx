@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const QuestionGenre = (props) => {
   const {question, onAnswer} = props;
   const {genre, answers} = question;
-  const [userAnswers, setUserAnswers] = useState(answers.map(() => false));
+  const [userAnswers, setUserAnswers] = useState({});
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -13,7 +13,11 @@ const QuestionGenre = (props) => {
 
   const handleInputChange = (i) => (e) => {
     const value = e.target.checked;
-    setUserAnswers([...userAnswers.slice(0, i), value, ...userAnswers.slice(i + 1)]);
+    setUserAnswers({
+      ...userAnswers,
+      [i]: value,
+    });
+    console.log(userAnswers);
   };
 
   return (
@@ -48,7 +52,7 @@ const QuestionGenre = (props) => {
                 </div>
                 <div className="game__answer">
                   <input className="game__input visually-hidden" type="checkbox" name="answer" value={answer.genre} id={answer.src + i}
-                    checked={userAnswers[i]}
+                    checked={Boolean(userAnswers[i])}
                     onChange={handleInputChange(i)} />
                   <label className="game__check" htmlFor={answer.src + i}>Отметить</label>
                 </div>
