@@ -1,10 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import AudioPlayer from "../audio-player/audio-player.jsx";
-
 const QuestionArtist = (props) => {
-  const {question, onAnswer} = props;
+  const {question, onAnswer, renderPlayer} = props;
   const {song, answers} = question;
 
   const handleInputChange = (e) => {
@@ -36,7 +34,7 @@ const QuestionArtist = (props) => {
         <h2 className="game__title">Кто исполняет эту песню?</h2>
         <div className="game__track">
           <div className="track">
-            <AudioPlayer isStarting={true} src={song.src} onPlayButtonClick={() => {}}/>
+            {renderPlayer(song.src, 0)}
           </div>
         </div>
 
@@ -72,6 +70,7 @@ QuestionArtist.propTypes = {
       artist: PropTypes.string.isRequired,
     })),
   }).isRequired,
+  renderPlayer: PropTypes.func.isRequired,
 };
 
 export default QuestionArtist;
