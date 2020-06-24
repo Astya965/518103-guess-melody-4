@@ -1,10 +1,13 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 
+import AudioPlayer from "../audio-player/audio-player.jsx";
+
 const QuestionGenre = (props) => {
   const {question, onAnswer} = props;
   const {genre, answers} = question;
   const [userAnswers, setUserAnswers] = useState({});
+  const [activePlayer, setActivePlayer] = useState(0);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -45,10 +48,8 @@ const QuestionGenre = (props) => {
           {answers.map((answer, i) => {
             return (
               <div className="track" key={answer.src + i}>
-                <button className="track__button track__button--play" type="button"></button>
-                <div className="track__status">
-                  <audio src={answer.src}></audio>
-                </div>
+                <AudioPlayer isStarting={i === activePlayer} src={answer.src}
+                  onPlayButtonClick={() => setActivePlayer(activePlayer === i ? -1 : i)}/>
                 <div className="game__answer">
                   <input className="game__input visually-hidden" type="checkbox" name="answer" value={answer.genre} id={answer.src + i}
                     checked={Boolean(userAnswers[i])}
