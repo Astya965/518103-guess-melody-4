@@ -1,4 +1,5 @@
 import React, {useRef, useEffect, useState} from "react";
+import PropTypes from "prop-types";
 
 const AudioPlayer = (props) => {
   const {src, isStarting, onPlayButtonClick} = props;
@@ -20,7 +21,7 @@ const AudioPlayer = (props) => {
       setIsPlaying(false);
     }
 
-  }, [isStarting, isPlaying])
+  }, [isStarting, isPlaying]);
 
   return (
     <React.Fragment>
@@ -37,7 +38,13 @@ const AudioPlayer = (props) => {
         <audio ref={audioRef} />
       </div>
     </React.Fragment>
-  )
-}
+  );
+};
+
+AudioPlayer.propTypes = {
+  src: PropTypes.string.isRequired,
+  isStarting: PropTypes.bool.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
+};
 
 export default AudioPlayer;
