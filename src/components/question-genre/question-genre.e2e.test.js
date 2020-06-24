@@ -12,6 +12,7 @@ describe(`QuestionArtist tests`, () => {
     const genreQuestion = shallow(<QuestionGenre
       onAnswer={onAnswer}
       question={question}
+      renderPlayer={() => {}}
     />);
 
     const form = genreQuestion.find(`form`);
@@ -34,6 +35,7 @@ describe(`QuestionArtist tests`, () => {
     const genreQuestion = mount(<QuestionGenre
       onAnswer={onAnswer}
       question={question}
+      renderPlayer={() => {}}
     />);
 
     const form = genreQuestion.find(`form`);

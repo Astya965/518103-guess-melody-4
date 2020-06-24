@@ -14,6 +14,7 @@ describe(`QuestionArtist tests`, () => {
     const screen = shallow(<QuestionArtist
       onAnswer={onAnswer}
       question={question}
+      renderPlayer={() => {}}
     />);
 
     const answerInputs = screen.find(`input`);

@@ -7,7 +7,10 @@ import questions from "../../mocks/questions.js";
 it(`Render QuestionArtist`, () => {
   const tree = renderer.
     create(
-        <QuestionArtist onAnswer={() => {}} question={questions[1]} />
+        <QuestionArtist
+          onAnswer={() => {}}
+          question={questions[1]}
+          renderPlayer={() => {}}/>
     ).toJSON();
 
   expect(tree).toMatchSnapshot();
