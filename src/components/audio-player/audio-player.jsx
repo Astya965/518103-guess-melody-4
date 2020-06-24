@@ -7,6 +7,11 @@ const AudioPlayer = (props) => {
   const [isPlaying, setIsPlaying] = useState(isStarting);
   const [isLoading, setIsLoading] = useState(true);
 
+  const handleButtonClick = () => {
+    setIsPlaying(!isPlaying);
+    onPlayButtonClick();
+  };
+
   useEffect(() => {
     const audio = audioRef.current;
     audio.src = src;
@@ -29,10 +34,7 @@ const AudioPlayer = (props) => {
         className={`track__button track__button--${isPlaying ? `pause` : `play`}`}
         type="button"
         disabled={isLoading}
-        onClick={() => {
-          setIsPlaying(!isPlaying);
-          onPlayButtonClick();
-        }}
+        onClick={handleButtonClick}
       />
       <div className="track__status">
         <audio ref={audioRef} />
