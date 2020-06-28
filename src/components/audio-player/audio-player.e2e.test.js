@@ -8,7 +8,7 @@ describe(`AudioPlayer button tests`, () => {
   const renderComponent = (props = {}) => {
     return shallow(
         <AudioPlayer
-          isStarting={false}
+          isActive={false}
           src={`some.mp3`}
           onPlayButtonClick={() => {}}
           {...props}/>

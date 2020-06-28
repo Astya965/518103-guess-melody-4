@@ -3,6 +3,7 @@
 exports[`Render AudioPlayer 1`] = `
 Array [
   <button
+    aria-label="play\\\\pause button"
     className="track__button track__button--play"
     disabled={true}
     onClick={[Function]}

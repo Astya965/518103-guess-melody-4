@@ -2,9 +2,9 @@ import React, {useRef, useEffect, useState} from "react";
 import PropTypes from "prop-types";
 
 const AudioPlayer = (props) => {
-  const {src, isStarting, onPlayButtonClick} = props;
+  const {src, isActive, onPlayButtonClick} = props;
   const audioRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(isStarting);
+  const [isPlaying, setIsPlaying] = useState(isActive);
   const [isLoading, setIsLoading] = useState(true);
 
   const handleButtonClick = () => {
@@ -18,7 +18,7 @@ const AudioPlayer = (props) => {
 
     audio.oncanplaythrough = () => setIsLoading(false);
 
-    if (isStarting && isPlaying) {
+    if (isActive && isPlaying) {
       audio.play();
       setIsPlaying(true);
     } else {
@@ -26,7 +26,7 @@ const AudioPlayer = (props) => {
       setIsPlaying(false);
     }
 
-  }, [isStarting, isPlaying]);
+  }, [isActive, isPlaying]);
 
   return (
     <React.Fragment>
@@ -46,7 +46,7 @@ const AudioPlayer = (props) => {
 
 AudioPlayer.propTypes = {
   src: PropTypes.string.isRequired,
-  isStarting: PropTypes.bool.isRequired,
+  isActive: PropTypes.bool.isRequired,
   onPlayButtonClick: PropTypes.func.isRequired,
 };
 

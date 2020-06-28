@@ -7,7 +7,7 @@ it(`Render AudioPlayer`, () => {
   const tree = renderer
     .create(
         <AudioPlayer
-          isStarting={false}
+          isActive={false}
           src={`some.mp3`}
           onPlayButtonClick={() => {}}/>
     ).toJSON();

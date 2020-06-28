@@ -11,7 +11,7 @@ const withActivePlayer = (Component) => (props) => {
 
       return <AudioPlayer
         src={src}
-        isStarting={id === activePlayer}
+        isActive={id === activePlayer}
         onPlayButtonClick={handleActiveChange}
       />;
     }}
