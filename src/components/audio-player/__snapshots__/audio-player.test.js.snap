@@ -12,7 +12,9 @@ Array [
   <div
     className="track__status"
   >
-    <audio />
+    <audio
+      src="some.mp3"
+    />
   </div>,
 ]
 `;

@@ -1,10 +1,15 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 
+import AudioPlayer from "../../components/audio-player/audio-player.jsx";
+import useActivePlayer from "../../hooks//useActivePlayer.js";
+
 const QuestionGenre = (props) => {
-  const {question, onAnswer, renderPlayer} = props;
+  const {question, onAnswer} = props;
   const {genre, answers} = question;
   const [userAnswers, setUserAnswers] = useState({});
+
+  const [activePlayer, handleActiveChange] = useActivePlayer();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -45,7 +50,9 @@ const QuestionGenre = (props) => {
           {answers.map((answer, i) => {
             return (
               <div className="track" key={answer.src + i}>
-                {renderPlayer(answer.src, i)}
+                <AudioPlayer src={answer.src}
+                  isActive={i === activePlayer}
+                  onPlayButtonClick={() => handleActiveChange(i)} />
                 <div className="game__answer">
                   <input className="game__input visually-hidden" type="checkbox" name="answer" value={answer.genre} id={answer.src + i}
                     checked={Boolean(userAnswers[i])}
@@ -73,7 +80,6 @@ QuestionGenre.propTypes = {
       genre: PropTypes.string.isRequired,
     })),
   }).isRequired,
-  renderPlayer: PropTypes.func.isRequired,
 };
 
 export default QuestionGenre;

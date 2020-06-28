@@ -14,7 +14,6 @@ const AudioPlayer = (props) => {
 
   useEffect(() => {
     const audio = audioRef.current;
-    audio.src = src;
 
     audio.oncanplaythrough = () => setIsLoading(false);
 
@@ -38,10 +37,14 @@ const AudioPlayer = (props) => {
         onClick={handleButtonClick}
       />
       <div className="track__status">
-        <audio ref={audioRef} />
+        <audio ref={audioRef} src={src} />
       </div>
     </React.Fragment>
   );
+};
+
+AudioPlayer.defaultProps = {
+  onPlayButtonClick: () => {},
 };
 
 AudioPlayer.propTypes = {

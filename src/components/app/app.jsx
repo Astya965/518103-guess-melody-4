@@ -7,11 +7,6 @@ import QuestionArtist from "../question-artist/question-artist.jsx";
 import QuestionGenre from "../question-genre/question-genre.jsx";
 import {GameType} from "../../utils/const.js";
 
-import withAudioPlayer from "../../hof/with-audio-player/with-audio-player.js";
-
-const GenreQuestionScreenWrapped = withAudioPlayer(QuestionGenre);
-const ArtistQuestionScreenWrapped = withAudioPlayer(QuestionArtist);
-
 const App = (props) => {
   const {errorCount, questions} = props;
   const [step, setStep] = useState(-1);
@@ -30,7 +25,7 @@ const App = (props) => {
       switch (currentQuestion.type) {
         case GameType.ARTIST:
           return (
-            <ArtistQuestionScreenWrapped
+            <QuestionArtist
               question={currentQuestion}
               onAnswer={() => {
                 setStep(step + 1);
@@ -38,7 +33,7 @@ const App = (props) => {
           );
         case GameType.GENRE:
           return (
-            <GenreQuestionScreenWrapped
+            <QuestionGenre
               question={currentQuestion}
               onAnswer={() => {
                 setStep(step + 1);
@@ -57,11 +52,11 @@ const App = (props) => {
           {renderScreen()}
         </Route>
         <Route exact path="/dev-artist">
-          <ArtistQuestionScreenWrapped question={questions[1]}
+          <QuestionArtist question={questions[1]}
             onAnswer={() => {}}/>
         </Route>
         <Route exact path="/dev-genre">
-          <GenreQuestionScreenWrapped question={questions[0]}
+          <QuestionGenre question={questions[0]}
             onAnswer={() => {}}/>
         </Route>
       </Switch>
