@@ -70,7 +70,7 @@ exports[`Render QuestionArtist 1`] = `
         className="track"
       >
         <button
-          aria-label="play\\\\pause button"
+          aria-label="Pause button"
           className="track__button track__button--pause"
           disabled={true}
           onClick={[Function]}
