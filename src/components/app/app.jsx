@@ -31,7 +31,7 @@ const App = (props) => {
         case GameType.ARTIST:
           return (
             <ArtistQuestionScreenWrapped
-              question={questions[1]}
+              question={currentQuestion}
               onAnswer={() => {
                 setStep(step + 1);
               }}/>
@@ -39,7 +39,7 @@ const App = (props) => {
         case GameType.GENRE:
           return (
             <GenreQuestionScreenWrapped
-              question={questions[0]}
+              question={currentQuestion}
               onAnswer={() => {
                 setStep(step + 1);
               }}/>
