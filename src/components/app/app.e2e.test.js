@@ -20,9 +20,6 @@ describe(`Render App`, () => {
         />);
   };
 
-  window.HTMLMediaElement.prototype.play = () => { /* do nothing */ };
-  window.HTMLMediaElement.prototype.pause = () => { /* do nothing */ };
-
   it(`Render first time`, () => {
     const appComponent = renderComponent();
 
