@@ -14,18 +14,17 @@ const AudioPlayer = (props) => {
 
   useEffect(() => {
     const audio = audioRef.current;
-
     audio.oncanplaythrough = () => setIsLoading(false);
+  });
 
-    if (isActive && isPlaying) {
-      audio.play();
-      setIsPlaying(true);
-    } else {
-      audio.pause();
-      setIsPlaying(false);
-    }
+  useEffect(() => {
+    const audio = audioRef.current;
+    isPlaying ? audio.play() : audio.pause();
+  }, [isPlaying]);
 
-  }, [isActive, isPlaying]);
+  useEffect(() => {
+    isActive ? setIsPlaying(true) : setIsPlaying(false);
+  }, [isActive]);
 
   return (
     <React.Fragment>
