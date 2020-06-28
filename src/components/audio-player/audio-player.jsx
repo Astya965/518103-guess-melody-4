@@ -29,7 +29,7 @@ const AudioPlayer = (props) => {
   return (
     <React.Fragment>
       <button
-        aria-label="play\pause button"
+        aria-label={`${isPlaying ? 'Pause' : `Play` } button`}
         className={`track__button track__button--${isPlaying ? `pause` : `play`}`}
         type="button"
         disabled={isLoading}
