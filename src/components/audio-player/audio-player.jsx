@@ -14,22 +14,34 @@ const AudioPlayer = (props) => {
 
   useEffect(() => {
     const audio = audioRef.current;
+
     audio.oncanplaythrough = () => setIsLoading(false);
   });
 
   useEffect(() => {
     const audio = audioRef.current;
-    isPlaying ? audio.play() : audio.pause();
+
+    if (isPlaying) {
+      audio.play();
+    } else {
+      audio.pause();
+    }
+
   }, [isPlaying]);
 
   useEffect(() => {
-    isActive ? setIsPlaying(true) : setIsPlaying(false);
+    if (isActive) {
+      setIsPlaying(true);
+    } else {
+      setIsPlaying(false);
+    }
+
   }, [isActive]);
 
   return (
     <React.Fragment>
       <button
-        aria-label={`${isPlaying ? 'Pause' : `Play` } button`}
+        aria-label={`${isPlaying ? `Pause` : `Play` } button`}
         className={`track__button track__button--${isPlaying ? `pause` : `play`}`}
         type="button"
         disabled={isLoading}
