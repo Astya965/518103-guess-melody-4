@@ -34,7 +34,7 @@ const AudioPlayer = (props) => {
       setIsPlaying(false);
     }
 
-  }, [isActive])
+  }, [isActive]);
 
   return (
     <React.Fragment>
