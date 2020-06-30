@@ -30,13 +30,11 @@ const AudioPlayer = (props) => {
   }, [isPlaying]);
 
   useEffect(() => {
-    if (isActive) {
-      setIsPlaying(true);
-    } else {
+    if (!isActive) {
       setIsPlaying(false);
     }
 
-  }, [isActive]);
+  }, [isActive])
 
   return (
     <React.Fragment>
