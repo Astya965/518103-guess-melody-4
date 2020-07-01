@@ -25,14 +25,16 @@ const App = (props) => {
       switch (currentQuestion.type) {
         case GameType.ARTIST:
           return (
-            <QuestionArtist question={questions[1]}
+            <QuestionArtist
+              question={currentQuestion}
               onAnswer={() => {
                 setStep(step + 1);
               }}/>
           );
         case GameType.GENRE:
           return (
-            <QuestionGenre question={questions[0]}
+            <QuestionGenre
+              question={currentQuestion}
               onAnswer={() => {
                 setStep(step + 1);
               }}/>

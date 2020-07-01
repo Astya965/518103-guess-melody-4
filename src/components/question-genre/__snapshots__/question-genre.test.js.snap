@@ -73,7 +73,10 @@ exports[`Render QuestionGenre 1`] = `
         className="track"
       >
         <button
-          className="track__button track__button--play"
+          aria-label="Pause button"
+          className="track__button track__button--pause"
+          disabled={true}
+          onClick={[Function]}
           type="button"
         />
         <div
@@ -107,7 +110,10 @@ exports[`Render QuestionGenre 1`] = `
         className="track"
       >
         <button
+          aria-label="Play button"
           className="track__button track__button--play"
+          disabled={true}
+          onClick={[Function]}
           type="button"
         />
         <div
@@ -141,7 +147,10 @@ exports[`Render QuestionGenre 1`] = `
         className="track"
       >
         <button
+          aria-label="Play button"
           className="track__button track__button--play"
+          disabled={true}
+          onClick={[Function]}
           type="button"
         />
         <div
@@ -175,7 +184,10 @@ exports[`Render QuestionGenre 1`] = `
         className="track"
       >
         <button
+          aria-label="Play button"
           className="track__button track__button--play"
+          disabled={true}
+          onClick={[Function]}
           type="button"
         />
         <div

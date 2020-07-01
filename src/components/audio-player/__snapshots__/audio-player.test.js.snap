@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render AudioPlayer 1`] = `
+Array [
+  <button
+    aria-label="Play button"
+    className="track__button track__button--play"
+    disabled={true}
+    onClick={[Function]}
+    type="button"
+  />,
+  <div
+    className="track__status"
+  >
+    <audio
+      src="some.mp3"
+    />
+  </div>,
+]
+`;
