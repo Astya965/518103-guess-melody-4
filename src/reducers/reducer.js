@@ -49,3 +49,39 @@ export const ActionCreator = {
     payload: 1,
   }),
 };
+
+export const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ActionType.INCREMENT_MISTAKES:
+      return incrementMistakes(state, action);
+
+    case ActionType.INCREMENT_STEP:
+      return incrementStep(state, action);
+
+    default: return state;
+  }
+};
+
+const incrementMistakes = (state, action) => {
+  const mistakes = state.mistakes + action.payload;
+
+  if (mistakes >= state.maxMistakes) {
+    return extendObject({}, initialState);
+  }
+
+  return extendObject(state, {
+    mistakes,
+  });
+};
+
+const incrementStep = (state, action) => {
+  let nextStep = state.step + action.payload;
+
+  if (nextStep >= state.questions.length) {
+    return extendObject({}, initialState);
+  }
+
+  return extendObject(state, {
+    step: nextStep,
+  });
+};
