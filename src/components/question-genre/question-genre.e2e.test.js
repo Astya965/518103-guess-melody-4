@@ -1,19 +1,29 @@
 import React from "react";
-import {shallow, mount} from "enzyme";
+import {mount} from "enzyme";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
 
 import QuestionGenre from "./question-genre.jsx";
 import questions from "../../mocks/questions.js";
 
+const mockStore = configureStore([]);
+
 describe(`QuestionArtist tests`, () => {
+  const store = mockStore({
+    mistakes: 2,
+  });
 
   it(`When user answers genre question form is not sent`, () => {
     const question = questions[0];
     const onAnswer = jest.fn();
-    const genreQuestion = shallow(<QuestionGenre
-      onAnswer={onAnswer}
-      question={question}
-      renderPlayer={() => {}}
-    />);
+    const genreQuestion = mount(
+        <Provider store={store}>
+          <QuestionGenre
+            onAnswer={onAnswer}
+            question={question}
+            renderPlayer={() => {}} />
+        </Provider>
+    );
 
     const form = genreQuestion.find(`form`);
     const formSendPrevention = jest.fn();
@@ -32,11 +42,13 @@ describe(`QuestionArtist tests`, () => {
     const userAnswer = {"1": true};
     const inputChecked = [false, true, false, false];
 
-    const genreQuestion = mount(<QuestionGenre
-      onAnswer={onAnswer}
-      question={question}
-      renderPlayer={() => {}}
-    />);
+    const genreQuestion = mount(
+        <Provider store={store}>
+          <QuestionGenre
+            onAnswer={onAnswer}
+            question={question}
+            renderPlayer={() => {}} />
+        </Provider>);
 
     const form = genreQuestion.find(`form`);
     const inputTwo = genreQuestion.find(`input`).at(1);
