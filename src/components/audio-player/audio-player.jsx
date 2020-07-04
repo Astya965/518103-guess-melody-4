@@ -15,16 +15,20 @@ const AudioPlayer = (props) => {
   useEffect(() => {
     const audio = audioRef.current;
 
-    audio.oncanplaythrough = () => setIsLoading(false);
+    if (audio) {
+      audio.oncanplaythrough = () => setIsLoading(false);
+    }
   });
 
   useEffect(() => {
     const audio = audioRef.current;
 
-    if (isPlaying) {
-      audio.play();
-    } else {
-      audio.pause();
+    if (audio) {
+      if (isPlaying) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
     }
 
   }, [isPlaying]);
