@@ -1,23 +1,36 @@
-import React, {useState} from "react";
-import PropTypes from "prop-types";
+import React from "react";
+import {useSelector, useDispatch} from "react-redux";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {ActionCreator} from "../../reducers/reducer.js";
 
 import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
 import QuestionArtist from "../question-artist/question-artist.jsx";
 import QuestionGenre from "../question-genre/question-genre.jsx";
 import {GameType} from "../../utils/const.js";
 
-const App = (props) => {
-  const {errorCount, questions} = props;
-  const [step, setStep] = useState(-1);
+const App = () => {
+  const maxMistakes = useSelector((state) => state.maxMistakes);
+  const questions = useSelector((state) => state.questions);
+  const step = useSelector((state) => state.step);
+  const dispatch = useDispatch();
+
   const currentQuestion = questions[step];
+
+  const onWelcomeButtonClick = () => {
+    dispatch(ActionCreator.incrementStep());
+  };
+
+  const onAnswer = (question, answer) => {
+    dispatch(ActionCreator.incrementMistake(question, answer));
+    dispatch(ActionCreator.incrementStep());
+  };
 
   const renderScreen = () => {
     if (step === -1 || step >= questions.length) {
       return (
         <WelcomeScreen
-          errorCount={errorCount}
-          onWelcomeButtonClick={() => setStep(0)}/>
+          errorCount={maxMistakes}
+          onWelcomeButtonClick={onWelcomeButtonClick}/>
       );
     }
 
@@ -27,17 +40,13 @@ const App = (props) => {
           return (
             <QuestionArtist
               question={currentQuestion}
-              onAnswer={() => {
-                setStep(step + 1);
-              }}/>
+              onAnswer={onAnswer}/>
           );
         case GameType.GENRE:
           return (
             <QuestionGenre
               question={currentQuestion}
-              onAnswer={() => {
-                setStep(step + 1);
-              }}/>
+              onAnswer={onAnswer}/>
           );
       }
     }
@@ -53,20 +62,15 @@ const App = (props) => {
         </Route>
         <Route exact path="/dev-artist">
           <QuestionArtist question={questions[1]}
-            onAnswer={() => {}}/>
+            onAnswer={onAnswer}/>
         </Route>
         <Route exact path="/dev-genre">
           <QuestionGenre question={questions[0]}
-            onAnswer={() => {}}/>
+            onAnswer={onAnswer}/>
         </Route>
       </Switch>
     </Router>
   );
-};
-
-App.propTypes = {
-  errorCount: PropTypes.number.isRequired,
-  questions: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default App;
