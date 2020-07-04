@@ -13,7 +13,7 @@ const QuestionGenre = (props) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    onAnswer(userAnswers, genre);
+    onAnswer(question, userAnswers);
   };
 
   const handleInputChange = (i) => (e) => {

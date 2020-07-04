@@ -9,7 +9,7 @@ const QuestionArtist = (props) => {
 
   const handleInputChange = (e) => {
     const value = e.target.value;
-    onAnswer(value, song.artist);
+    onAnswer(question, value);
   };
 
   return (

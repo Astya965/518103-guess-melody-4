@@ -45,7 +45,7 @@ describe(`QuestionArtist tests`, () => {
     form.simulate(`submit`, {preventDefault() {}});
 
     expect(onAnswer).toHaveBeenCalledTimes(1);
-    expect(onAnswer).toHaveBeenCalledWith(userAnswer, question.genre);
+    expect(onAnswer).toHaveBeenCalledWith(question, userAnswer);
 
     expect(
         genreQuestion.find(`input`).map((it) => it.prop(`checked`))

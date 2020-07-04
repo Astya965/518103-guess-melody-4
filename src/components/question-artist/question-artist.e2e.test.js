@@ -23,6 +23,6 @@ describe(`QuestionArtist tests`, () => {
     answerOne.simulate(`change`, {target: {value: `one`}});
 
     expect(onAnswer).toHaveBeenCalledTimes(1);
-    expect(onAnswer).toHaveBeenCalledWith(userAnswer, question.song.artist);
+    expect(onAnswer).toHaveBeenCalledWith(question, userAnswer);
   });
 });
