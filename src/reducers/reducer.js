@@ -1,4 +1,3 @@
-import {extendObject} from "../utils/utils.js";
 import {GameType} from '../utils/const.js';
 import questions from "../mocks/questions.js";
 
@@ -12,6 +11,7 @@ const initialState = {
 export const ActionType = {
   PROCESS_ANSWER: `PROCESS_ANSWER`,
   INCREMENT_STEP: `INCREMENT_STEP`,
+  RESET: `RESET`,
 };
 
 const isArtistAnswerCorrect = (question, userAnswer) => {
@@ -48,40 +48,24 @@ export const ActionCreator = {
     type: ActionType.INCREMENT_STEP,
     payload: 1,
   }),
+
+  resetGame: () => ({
+      type: ActionType.RESET,
+      payload: null,
+  }),
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.INCREMENT_MISTAKES:
-      return incrementMistakes(state, action);
+    case ActionType.PROCESS_ANSWER:
+      return {...state, ...{mistakes: state.mistakes + action.payload}};
 
     case ActionType.INCREMENT_STEP:
-      return incrementStep(state, action);
+      return {...state, ...{step: state.step + action.payload}};
+
+    case ActionType.RESET:
+      return {...initialState, ...{step: -1, mistakes: 0}};
 
     default: return state;
   }
-};
-
-const incrementMistakes = (state, action) => {
-  const mistakes = state.mistakes + action.payload;
-
-  if (mistakes >= state.maxMistakes) {
-    return extendObject({}, initialState);
-  }
-
-  return extendObject(state, {
-    mistakes,
-  });
-};
-
-const incrementStep = (state, action) => {
-  let nextStep = state.step + action.payload;
-
-  if (nextStep >= state.questions.length) {
-    return extendObject({}, initialState);
-  }
-
-  return extendObject(state, {
-    step: nextStep,
-  });
 };

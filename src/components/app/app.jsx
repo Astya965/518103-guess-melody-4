@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import {ActionCreator} from "../../reducers/reducer.js";
@@ -15,6 +15,12 @@ const App = () => {
   const questions = useSelector(getQuestions);
   const step = useSelector(getStep);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (mistakes >= maxMistakes || step >= questions.length) {
+      dispatch(ActionCreator.resetGame());
+    }
+  });
 
   const currentQuestion = questions[step];
 
