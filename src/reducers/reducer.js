@@ -10,7 +10,7 @@ const initialState = {
 };
 
 export const ActionType = {
-  INCREMENT_MISTAKES: `INCREMENT_MISTAKES`,
+  PROCESS_ANSWER: `PROCESS_ANSWER`,
   INCREMENT_STEP: `INCREMENT_STEP`,
 };
 
@@ -26,7 +26,7 @@ const isGenreAnswerCorrect = (question, userAnswer) => {
 };
 
 export const ActionCreator = {
-  incrementMistake: (question, userAnswer) => {
+  processAnswer: (question, userAnswer) => {
     let answerIsCorrect = false;
 
     switch (question.type) {
@@ -39,7 +39,7 @@ export const ActionCreator = {
     }
 
     return {
-      type: ActionType.INCREMENT_MISTAKES,
+      type: ActionType.PROCESS_ANSWER,
       payload: answerIsCorrect ? 0 : 1,
     };
   },
