@@ -7,11 +7,13 @@ import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
 import QuestionArtist from "../question-artist/question-artist.jsx";
 import QuestionGenre from "../question-genre/question-genre.jsx";
 import {GameType} from "../../utils/const.js";
+import {getStep, getMistakes, getMaxMistakes, getQuestions} from "../../reducers/selectors.js";
 
 const App = () => {
-  const maxMistakes = useSelector((state) => state.maxMistakes);
-  const questions = useSelector((state) => state.questions);
-  const step = useSelector((state) => state.step);
+  const maxMistakes = useSelector(getMaxMistakes);
+  const mistakes = useSelector(getMistakes);
+  const questions = useSelector(getQuestions);
+  const step = useSelector(getStep);
   const dispatch = useDispatch();
 
   const currentQuestion = questions[step];
@@ -21,7 +23,7 @@ const App = () => {
   };
 
   const onAnswer = (question, answer) => {
-    dispatch(ActionCreator.incrementMistake(question, answer));
+    dispatch(ActionCreator.processAnswer(question, answer));
     dispatch(ActionCreator.incrementStep());
   };
 
