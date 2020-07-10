@@ -43,7 +43,7 @@ it(`Reducer should increment number of mistakes by a given value`, () => {
     step: -1,
     mistakes: 0,
   }, {
-    type: ActionType.INCREMENT_MISTAKES,
+    type: ActionType.PROCESS_ANSWER,
     payload: 1,
   })).toEqual({
     step: -1,
@@ -54,7 +54,7 @@ it(`Reducer should increment number of mistakes by a given value`, () => {
     step: -1,
     mistakes: 0,
   }, {
-    type: ActionType.INCREMENT_MISTAKES,
+    type: ActionType.PROCESS_ANSWER,
     payload: 0,
   })).toEqual({
     step: -1,
@@ -71,7 +71,7 @@ describe(`Action creators work correctly`, () => {
   });
 
   it(`Action creator for incrementing mistake returns action with 0 payload if answer for artist is correct`, () => {
-    expect(ActionCreator.incrementMistake({
+    expect(ActionCreator.processAnswer({
       type: `artist`,
       song: {
         artist: `correct`,
@@ -86,13 +86,13 @@ describe(`Action creators work correctly`, () => {
     },
     `correct`
     )).toEqual({
-      type: ActionType.INCREMENT_MISTAKES,
+      type: ActionType.PROCESS_ANSWER,
       payload: 0,
     });
   });
 
   it(`Action creator for incrementing mistake returns action with 1 payload if answer for artist is incorrect`, () => {
-    expect(ActionCreator.incrementMistake({
+    expect(ActionCreator.processAnswer({
       type: `artist`,
       song: {
         artist: `correct`,
@@ -107,13 +107,13 @@ describe(`Action creators work correctly`, () => {
     },
     `incorrect`
     )).toEqual({
-      type: ActionType.INCREMENT_MISTAKES,
+      type: ActionType.PROCESS_ANSWER,
       payload: 1,
     });
   });
 
   it(`Action creator for incrementing mistake returns action with 0 payload if answer for genre is correct`, () => {
-    expect(ActionCreator.incrementMistake({
+    expect(ActionCreator.processAnswer({
       type: `genre`,
       genre: `jazz`,
       answers: [
@@ -127,13 +127,13 @@ describe(`Action creators work correctly`, () => {
       ]
     },
     {1: true})).toEqual({
-      type: ActionType.INCREMENT_MISTAKES,
+      type: ActionType.PROCESS_ANSWER,
       payload: 0,
     });
   });
 
   it(`Action creator for incrementing mistake returns action with 1 payload if answer for genre is incorrect`, () => {
-    expect(ActionCreator.incrementMistake({
+    expect(ActionCreator.processAnswer({
       type: `genre`,
       genre: `jazz`,
       answers: [
@@ -147,7 +147,7 @@ describe(`Action creators work correctly`, () => {
       ]
     },
     {0: true, 1: true})).toEqual({
-      type: ActionType.INCREMENT_MISTAKES,
+      type: ActionType.PROCESS_ANSWER,
       payload: 1,
     });
   });

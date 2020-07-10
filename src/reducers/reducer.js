@@ -50,8 +50,8 @@ export const ActionCreator = {
   }),
 
   resetGame: () => ({
-      type: ActionType.RESET,
-      payload: null,
+    type: ActionType.RESET,
+    payload: null,
   }),
 };
 
