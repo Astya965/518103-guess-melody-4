@@ -1,4 +1,3 @@
-import {GameType} from '../utils/const.js';
 import questions from "../mocks/questions.js";
 
 const initialState = {
@@ -9,40 +8,22 @@ const initialState = {
 };
 
 export const ActionType = {
-  PROCESS_ANSWER: `PROCESS_ANSWER`,
+  PROCESS_CORRECT_ANSWER: `PROCESS_CORRECT_ANSWER`,
+  PROCESS_WRONG_ANSWER: `PROCESS_WRONG_ANSWER`,
   INCREMENT_STEP: `INCREMENT_STEP`,
   RESET: `RESET`,
 };
 
-const isArtistAnswerCorrect = (question, userAnswer) => {
-  return userAnswer === question.song.artist;
-};
-
-const isGenreAnswerCorrect = (question, userAnswer) => {
-  return Object.entries(userAnswer)
-    .every(([key, value]) => {
-      return value === (question.answers[key].genre === question.genre);
-    });
-};
-
 export const ActionCreator = {
-  processAnswer: (question, userAnswer) => {
-    let answerIsCorrect = false;
+  processCorrectAnswer: () => ({
+    type: ActionType.PROCESS_CORRECT_ANSWER,
+    payload: null,
+  }),
 
-    switch (question.type) {
-      case GameType.ARTIST:
-        answerIsCorrect = isArtistAnswerCorrect(question, userAnswer);
-        break;
-      case GameType.GENRE:
-        answerIsCorrect = isGenreAnswerCorrect(question, userAnswer);
-        break;
-    }
-
-    return {
-      type: ActionType.PROCESS_ANSWER,
-      payload: answerIsCorrect ? 0 : 1,
-    };
-  },
+  processWrongAnswer: () => ({
+    type: ActionType.PROCESS_WRONG_ANSWER,
+    payload: 1,
+  }),
 
   incrementStep: () => ({
     type: ActionType.INCREMENT_STEP,
@@ -57,7 +38,10 @@ export const ActionCreator = {
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.PROCESS_ANSWER:
+    case ActionType.PROCESS_CORRECT_ANSWER:
+      return state;
+
+    case ActionType.PROCESS_WRONG_ANSWER:
       return {...state, mistakes: state.mistakes + action.payload};;
 
     case ActionType.INCREMENT_STEP:
