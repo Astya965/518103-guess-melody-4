@@ -1,5 +1,3 @@
-import {GameType} from "../utils/const.js";
-
 export const getStep = (state) => {
   return state.step;
 };

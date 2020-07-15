@@ -42,7 +42,7 @@ export const reducer = (state = initialState, action) => {
       return state;
 
     case ActionType.PROCESS_WRONG_ANSWER:
-      return {...state, mistakes: state.mistakes + action.payload};;
+      return {...state, mistakes: state.mistakes + action.payload};
 
     case ActionType.INCREMENT_STEP:
       return {...state, step: state.step + action.payload};

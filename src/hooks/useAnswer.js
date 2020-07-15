@@ -6,11 +6,11 @@ const useAnswer = (question, userAnswer, dispatch) => {
   const checkUserAnswer = () => {
     let answerIsCorrect = false;
 
-    const isArtistAnswerCorrect = (question, userAnswer) => {
+    const isArtistAnswerCorrect = () => {
       return userAnswer === question.song.artist;
     };
 
-    const isGenreAnswerCorrect = (question, userAnswer) => {
+    const isGenreAnswerCorrect = () => {
       return Object.entries(userAnswer)
         .every(([key, value]) => {
           return value === (question.answers[key].genre === question.genre);
@@ -19,10 +19,10 @@ const useAnswer = (question, userAnswer, dispatch) => {
 
     switch (question.type) {
       case GameType.ARTIST:
-        answerIsCorrect = isArtistAnswerCorrect(question, userAnswer);
+        answerIsCorrect = isArtistAnswerCorrect();
         break;
       case GameType.GENRE:
-        answerIsCorrect = isGenreAnswerCorrect(question, userAnswer);
+        answerIsCorrect = isGenreAnswerCorrect();
         break;
     }
 
