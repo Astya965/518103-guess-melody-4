@@ -1,13 +1,13 @@
 import React, {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import {ActionCreator} from "../../reducers/reducer.js";
+import {ActionCreator} from "../../store/reducer.js";
 
 import WelcomeScreen from "../welcome-screen/welcome-screen.jsx";
 import QuestionArtist from "../question-artist/question-artist.jsx";
 import QuestionGenre from "../question-genre/question-genre.jsx";
 import {GameType} from "../../utils/const.js";
-import {getStep, getMistakes, getMaxMistakes, getQuestions} from "../../reducers/selectors.js";
+import {getStep, getMistakes, getMaxMistakes, getQuestions} from "../../store/selectors.js";
 
 const App = () => {
   const maxMistakes = useSelector(getMaxMistakes);
