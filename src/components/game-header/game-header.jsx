@@ -2,9 +2,10 @@ import React from "react";
 import {useSelector} from "react-redux";
 
 import Mistakes from "../mistakes/mistakes.jsx";
+import {getMistakes} from "../../store/selectors.js";
 
 const GameHeader = () => {
-  const mistakes = useSelector((state) => state.mistakes);
+  const mistakes = useSelector(getMistakes);
 
   return (
     <header className="game__header">
