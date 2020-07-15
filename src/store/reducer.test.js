@@ -43,7 +43,7 @@ it(`Reducer should increment number of mistakes by a given value`, () => {
     step: -1,
     mistakes: 0,
   }, {
-    type: ActionType.PROCESS_ANSWER,
+    type: ActionType.PROCESS_WRONG_ANSWER,
     payload: 1,
   })).toEqual({
     step: -1,
@@ -54,11 +54,28 @@ it(`Reducer should increment number of mistakes by a given value`, () => {
     step: -1,
     mistakes: 0,
   }, {
-    type: ActionType.PROCESS_ANSWER,
+    type: ActionType.PROCESS_CORRECT_ANSWER,
     payload: 0,
   })).toEqual({
     step: -1,
     mistakes: 0,
+  });
+});
+
+it(`Reducer should reset to initial state`, () => {
+  expect(reducer({
+    mistakes: 2,
+    maxMistakes: 3,
+    step: 1,
+    questions,
+  }, {
+    type: ActionType.RESET,
+    payload: null,
+  })).toEqual({
+    mistakes: 0,
+    maxMistakes: 3,
+    step: -1,
+    questions,
   });
 });
 
@@ -70,85 +87,24 @@ describe(`Action creators work correctly`, () => {
     });
   });
 
-  it(`Action creator for incrementing mistake returns action with 0 payload if answer for artist is correct`, () => {
-    expect(ActionCreator.processAnswer({
-      type: `artist`,
-      song: {
-        artist: `correct`,
-        src: ``,
-      },
-      answers: [
-        {
-          artist: `correct`,
-          picture: ``,
-        }
-      ]
-    },
-    `correct`
-    )).toEqual({
-      type: ActionType.PROCESS_ANSWER,
-      payload: 0,
+  it(`Action creator for process correct answer returns correct action`, () => {
+    expect(ActionCreator.processCorrectAnswer()).toEqual({
+      type: ActionType.PROCESS_CORRECT_ANSWER,
+      payload: null,
     });
   });
 
-  it(`Action creator for incrementing mistake returns action with 1 payload if answer for artist is incorrect`, () => {
-    expect(ActionCreator.processAnswer({
-      type: `artist`,
-      song: {
-        artist: `correct`,
-        src: ``,
-      },
-      answers: [
-        {
-          artist: `incorrect`,
-          picture: ``,
-        }
-      ]
-    },
-    `incorrect`
-    )).toEqual({
-      type: ActionType.PROCESS_ANSWER,
+  it(`Action creator for process wrong answer returns correct action`, () => {
+    expect(ActionCreator.processWrongAnswer()).toEqual({
+      type: ActionType.PROCESS_WRONG_ANSWER,
       payload: 1,
     });
   });
 
-  it(`Action creator for incrementing mistake returns action with 0 payload if answer for genre is correct`, () => {
-    expect(ActionCreator.processAnswer({
-      type: `genre`,
-      genre: `jazz`,
-      answers: [
-        {
-          genre: `rock`,
-          src: ``,
-        }, {
-          genre: `jazz`,
-          src: ``,
-        },
-      ]
-    },
-    {1: true})).toEqual({
-      type: ActionType.PROCESS_ANSWER,
-      payload: 0,
-    });
-  });
-
-  it(`Action creator for incrementing mistake returns action with 1 payload if answer for genre is incorrect`, () => {
-    expect(ActionCreator.processAnswer({
-      type: `genre`,
-      genre: `jazz`,
-      answers: [
-        {
-          genre: `rock`,
-          src: ``,
-        }, {
-          genre: `jazz`,
-          src: ``,
-        },
-      ]
-    },
-    {0: true, 1: true})).toEqual({
-      type: ActionType.PROCESS_ANSWER,
-      payload: 1,
+  it(`Action creator for reset returns correct action`, () => {
+    expect(ActionCreator.resetGame()).toEqual({
+      type: ActionType.RESET,
+      payload: null,
     });
   });
 });
