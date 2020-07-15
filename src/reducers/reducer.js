@@ -58,13 +58,13 @@ export const ActionCreator = {
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.PROCESS_ANSWER:
-      return {...state, ...{mistakes: state.mistakes + action.payload}};
+      return {...state, mistakes: state.mistakes + action.payload};;
 
     case ActionType.INCREMENT_STEP:
-      return {...state, ...{step: state.step + action.payload}};
+      return {...state, step: state.step + action.payload};
 
     case ActionType.RESET:
-      return {...initialState, ...{step: -1, mistakes: 0}};
+      return {...initialState, step: -1, mistakes: 0};
 
     default: return state;
   }
