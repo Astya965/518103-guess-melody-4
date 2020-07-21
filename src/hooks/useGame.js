@@ -1,7 +1,6 @@
 import {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import {ActionCreator} from "../store/reducer.js";
-import {getStep, getMistakes, getMaxMistakes, getQuestions} from "../store/selectors.js";
+import {ActionCreator, getStep, getMistakes, getMaxMistakes, getQuestions} from "../store/reducer.js";
 
 import useAnswer from "../hooks/useAnswer.js";
 

@@ -2,7 +2,7 @@ import React from "react";
 import {useSelector} from "react-redux";
 
 import Mistakes from "../mistakes/mistakes.jsx";
-import {getMistakes} from "../../store/selectors.js";
+import {getMistakes} from "../../store/reducer.js";
 
 const GameHeader = () => {
   const mistakes = useSelector(getMistakes);
