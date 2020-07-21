@@ -1,32 +1,27 @@
 import {GameType} from "../utils/const.js";
 import {ActionCreator} from "../store/reducer.js";
 
+const isArtistAnswerCorrect = (question, userAnswer) => {
+  return userAnswer === question.song.artist;
+};
+
+const isGenreAnswerCorrect = (question, userAnswer) => {
+  return Object.entries(userAnswer)
+    .every(([key, value]) => {
+      return value === (question.answers[key].genre === question.genre);
+    });
+};
+
 const useAnswer = (question, userAnswer, dispatch) => {
 
   const checkUserAnswer = () => {
-    let answerIsCorrect = false;
-
-    const isArtistAnswerCorrect = () => {
-      return userAnswer === question.song.artist;
-    };
-
-    const isGenreAnswerCorrect = () => {
-      return Object.entries(userAnswer)
-        .every(([key, value]) => {
-          return value === (question.answers[key].genre === question.genre);
-        });
-    };
 
     switch (question.type) {
       case GameType.ARTIST:
-        answerIsCorrect = isArtistAnswerCorrect();
-        break;
+        return isArtistAnswerCorrect(question, userAnswer);
       case GameType.GENRE:
-        answerIsCorrect = isGenreAnswerCorrect();
-        break;
+        return  isGenreAnswerCorrect(question, userAnswer);
     }
-
-    return answerIsCorrect;
   };
 
   dispatch(checkUserAnswer() ? ActionCreator.processCorrectAnswer() : ActionCreator.processWrongAnswer());
