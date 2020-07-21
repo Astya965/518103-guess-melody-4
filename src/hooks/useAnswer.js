@@ -12,20 +12,23 @@ const isGenreAnswerCorrect = (question, userAnswer) => {
     });
 };
 
-const useAnswer = (question, userAnswer, dispatch) => {
+const useAnswer = (question, userAnswer) => {
 
   const checkUserAnswer = () => {
-
     switch (question.type) {
       case GameType.ARTIST:
         return isArtistAnswerCorrect(question, userAnswer);
       case GameType.GENRE:
-        return  isGenreAnswerCorrect(question, userAnswer);
+        return isGenreAnswerCorrect(question, userAnswer);
     }
+
+    return false;
   };
 
-  dispatch(checkUserAnswer() ? ActionCreator.processCorrectAnswer() : ActionCreator.processWrongAnswer());
-  dispatch(ActionCreator.incrementStep());
+  return [
+    checkUserAnswer() ? ActionCreator.processCorrectAnswer() : ActionCreator.processWrongAnswer(),
+    ActionCreator.incrementStep()
+  ];
 };
 
 export default useAnswer;

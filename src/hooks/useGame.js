@@ -23,7 +23,9 @@ const useGame = () => {
   };
 
   const onAnswer = (question, answer) => {
-    useAnswer(question, answer, dispatch);
+    useAnswer(question, answer).forEach((action) => {
+      dispatch(action);
+    });
   };
 
   return {
