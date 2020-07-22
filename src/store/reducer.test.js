@@ -1,13 +1,8 @@
-import {reducer, ActionCreator, ActionType} from "./reducer.js";
+import {initialState, reducer, ActionCreator, ActionType} from "./reducer.js";
 import questions from "../mocks/questions.js";
 
 it(`Reducer without additional parameters should return initial state`, () => {
-  expect(reducer(void 0, {})).toEqual({
-    mistakes: 0,
-    maxMistakes: 3,
-    step: -1,
-    questions,
-  });
+  expect(reducer(initialState, {})).toEqual(initialState);
 });
 
 it(`Reducer should increment current step by a given value`, () => {
