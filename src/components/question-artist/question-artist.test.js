@@ -19,6 +19,7 @@ it(`Render QuestionArtist`, () => {
           <QuestionArtist
             onAnswer={() => {}}
             question={questions[1]}
+            mistakes={2}
             renderPlayer={() => {}}/>
         </Provider>
     ).toJSON();

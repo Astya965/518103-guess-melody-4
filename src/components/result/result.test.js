@@ -9,6 +9,7 @@ describe(`Render Result`, () => {
         isSuccess={true}
         mistakes={2}
         right={5}
+        onResetButtonClick={() => {}}
       />)
       .toJSON();
 
@@ -19,6 +20,7 @@ describe(`Render Result`, () => {
     const tree = renderer
       .create(<Result
         isSuccess={false}
+        onResetButtonClick={() => {}}
       />)
       .toJSON();
 

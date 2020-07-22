@@ -5,7 +5,7 @@ import GameHeader from "../../components/game-header/game-header.jsx";
 import AudioPlayer from "../../components/audio-player/audio-player.jsx";
 
 const QuestionGenre = (props) => {
-  const {question, onAnswer} = props;
+  const {question, mistakes, onAnswer} = props;
   const {genre, answers} = question;
   const [userAnswers, setUserAnswers] = useState({});
   const [activePlayer, setActivePlayer] = useState(0);
@@ -27,7 +27,7 @@ const QuestionGenre = (props) => {
 
   return (
     <section className="game game--genre">
-      <GameHeader />
+      <GameHeader mistakes={mistakes} />
 
       <section className="game__screen">
         <h2 className="game__title">Выберите {genre} треки</h2>
@@ -65,6 +65,7 @@ QuestionGenre.propTypes = {
       genre: PropTypes.string.isRequired,
     })),
   }).isRequired,
+  mistakes: PropTypes.number.isRequired,
 };
 
 export default QuestionGenre;

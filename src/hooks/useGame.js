@@ -1,4 +1,3 @@
-import {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {ActionCreator, getStep, getMistakes, getMaxMistakes, getQuestions} from "../store/reducer.js";
 import {isArtistAnswerCorrect, isGenreAnswerCorrect} from "../utils/utils.js";

@@ -23,6 +23,7 @@ describe(`QuestionArtist tests`, () => {
           <QuestionArtist
             onAnswer={onAnswer}
             question={question}
+            mistakes={2}
             renderPlayer={() => {}}
           />
         </Provider>

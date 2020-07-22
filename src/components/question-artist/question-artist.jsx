@@ -5,7 +5,7 @@ import GameHeader from "../../components/game-header/game-header.jsx";
 import AudioPlayer from "../../components/audio-player/audio-player.jsx";
 
 const QuestionArtist = (props) => {
-  const {question, onAnswer} = props;
+  const {question, mistakes, onAnswer} = props;
   const {song, answers} = question;
 
   const handleInputChange = (e) => {
@@ -15,7 +15,7 @@ const QuestionArtist = (props) => {
 
   return (
     <section className="game game--artist">
-      <GameHeader />
+      <GameHeader mistakes={mistakes} />
 
       <section className="game__screen">
         <h2 className="game__title">Кто исполняет эту песню?</h2>
@@ -57,6 +57,7 @@ QuestionArtist.propTypes = {
       artist: PropTypes.string.isRequired,
     })),
   }).isRequired,
+  mistakes: PropTypes.number.isRequired,
 };
 
 export default QuestionArtist;

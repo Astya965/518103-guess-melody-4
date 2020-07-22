@@ -19,6 +19,7 @@ it(`Render QuestionGenre`, () => {
           <QuestionGenre
             onAnswer={() => {}}
             question={questions[0]}
+            mistakes={2}
             renderPlayer={() => {}}/>
         </Provider>
     ).toJSON();

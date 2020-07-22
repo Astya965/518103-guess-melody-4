@@ -1,11 +1,10 @@
 import React from "react";
-import {useSelector} from "react-redux";
+import PropTypes from "prop-types";
 
 import Mistakes from "../mistakes/mistakes.jsx";
-import {getMistakes} from "../../store/reducer.js";
 
-const GameHeader = () => {
-  const mistakes = useSelector(getMistakes);
+const GameHeader = (props) => {
+  const {mistakes} = props;
 
   return (
     <header className="game__header">
@@ -24,6 +23,10 @@ const GameHeader = () => {
       </div>
     </header>
   );
+};
+
+GameHeader.propTypes = {
+  mistakes: PropTypes.number.isRequired,
 };
 
 export default GameHeader;

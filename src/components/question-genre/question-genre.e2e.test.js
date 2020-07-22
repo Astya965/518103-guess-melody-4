@@ -21,6 +21,7 @@ describe(`QuestionArtist tests`, () => {
           <QuestionGenre
             onAnswer={onAnswer}
             question={question}
+            mistakes={2}
             renderPlayer={() => {}} />
         </Provider>
     );
@@ -47,6 +48,7 @@ describe(`QuestionArtist tests`, () => {
           <QuestionGenre
             onAnswer={onAnswer}
             question={question}
+            mistakes={2}
             renderPlayer={() => {}} />
         </Provider>);
 

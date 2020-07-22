@@ -39,12 +39,14 @@ const App = () => {
           return (
             <QuestionArtist
               question={currentQuestion}
+              mistakes={mistakes}
               onAnswer={onAnswer}/>
           );
         case GameType.GENRE:
           return (
             <QuestionGenre
               question={currentQuestion}
+              mistakes={mistakes}
               onAnswer={onAnswer}/>
           );
       }
