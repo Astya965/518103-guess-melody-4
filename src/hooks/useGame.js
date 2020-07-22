@@ -22,14 +22,12 @@ const useGame = () => {
   const step = useSelector(getStep);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (mistakes >= maxMistakes || step >= questions.length) {
-      dispatch(ActionCreator.resetGame());
-    }
-  });
-
   const onWelcomeButtonClick = () => {
     dispatch(ActionCreator.incrementStep());
+  };
+
+  const onResetButtonClick = () => {
+    dispatch(ActionCreator.resetGame());
   };
 
   const onAnswer = (question, answer) => {
@@ -42,10 +40,12 @@ const useGame = () => {
   };
 
   return {
+    mistakes,
     maxMistakes,
     questions,
     step,
     onWelcomeButtonClick,
+    onResetButtonClick,
     onAnswer
   };
 };
