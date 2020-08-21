@@ -26,6 +26,7 @@ exports[`Render Result With isSuccess is false 1`] = `
   </p>
   <button
     className="replay"
+    onClick={[Function]}
     type="button"
   >
     Попробовать ещё раз
@@ -59,6 +60,7 @@ exports[`Render Result With isSuccess is true 1`] = `
   </p>
   <button
     className="replay"
+    onClick={[Function]}
     type="button"
   >
     Попробовать ещё раз

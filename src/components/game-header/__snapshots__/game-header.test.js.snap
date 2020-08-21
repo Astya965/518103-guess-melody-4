@@ -47,9 +47,6 @@ exports[`Render GameHeader 1`] = `
       <div
         className="wrong"
       />
-      <div
-        className="wrong"
-      />
     </div>
   </div>
 </header>
