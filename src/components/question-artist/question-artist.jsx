@@ -44,6 +44,10 @@ const QuestionArtist = (props) => {
   );
 };
 
+QuestionArtist.defaultProps = {
+  mistakes: 0
+};
+
 QuestionArtist.propTypes = {
   onAnswer: PropTypes.func.isRequired,
   question: PropTypes.shape({

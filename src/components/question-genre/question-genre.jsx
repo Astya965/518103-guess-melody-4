@@ -55,6 +55,10 @@ const QuestionGenre = (props) => {
   );
 };
 
+QuestionGenre.defaultProps = {
+  mistakes: 0
+};
+
 QuestionGenre.propTypes = {
   onAnswer: PropTypes.func.isRequired,
   question: PropTypes.shape({
